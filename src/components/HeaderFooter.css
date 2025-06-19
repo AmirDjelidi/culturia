@@ -1,0 +1,49 @@
+.header, .footer {
+  background-color: #15202B;
+  color: #CCA052;
+  padding: 15px;
+  text-align: center;
+}
+
+.logo-img {
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6em;
+  color: #CCA052;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.menu-icon {
+  margin-left: 150px auto 0;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon div {
+  height: 4px;
+  background: #CCA052;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.footer a {
+  color: #CCA052;
+  text-decoration: none;
+  margin: 5px;
+  font-size: 1em;
+}

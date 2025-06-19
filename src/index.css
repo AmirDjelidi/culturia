@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  background-color: #15202B;
+  color: #CCA052;
+}
+
+.main-content {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px); /* espace entre header et footer */
+  flex-direction: column;
+}
