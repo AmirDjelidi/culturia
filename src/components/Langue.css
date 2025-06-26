@@ -1,0 +1,31 @@
+.language {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.dropdown-wrapper {
+  margin: 1rem auto;
+  display: inline-block;
+  position: relative;
+}
+
+.language-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+  appearance: none;
+  cursor: pointer;
+}
+
+.language-dropdown:hover {
+  background-color: #333;
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: #888;
+}
