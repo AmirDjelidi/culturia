@@ -1,21 +1,36 @@
 const express = require('express');
 const router = express.Router();
 
-let langueActuelle = 'Français'; // variable partagée temporaire
+let langueActuelle = 'fr'; // default code
 
-router.post('/api/langue', (req, res) => {
-  const { langue } = req.body;
-  if (langue) {
-    langueActuelle = langue;
-    console.log('Langue reçue :', langue);
-    res.status(200).send({ message: 'Langue mise à jour.' });
-  } else {
-    res.status(400).send({ error: 'Langue manquante.' });
+router.post('/', (req, res) => {
+  const { langue } = req.body; // ici tu reçois le nom affiché
+  const langMap = {
+    Français: 'fr',
+    English: 'en',
+    Español: 'es',
+    Português: 'pt',
+    Deutsch: 'de',
+    한국어: 'ko',
+    中文: 'zh',
+    Русский: 'ru'
+  };
+
+  const langCode = langMap[langue] || 'fr';
+
+  langueActuelle = langCode;
+  console.log('Langue reçue :', langue, '=> stockée code :', langCode);
+  res.status(200).send({ message: 'Langue mise à jour.' });
+});
+
+router.get('/', (req, res) => {
+  try {
+    res.json({ langue: langueActuelle }); // renvoie code langue
+  } catch (error) {
+    console.error("Erreur getLangue :", error);
+    res.status(500).json({ message: "Erreur serveur" });
   }
 });
 
-router.get('/api/langue', (req, res) => {
-  res.send({ langue: langueActuelle });
-});
-
 module.exports = { router, getLangue: () => langueActuelle };
+

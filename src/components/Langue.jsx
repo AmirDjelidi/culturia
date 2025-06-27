@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Langue.css';
 import { useTranslation } from 'react-i18next';
 
-
-
 function Langue() {
   const [selectedLang, setSelectedLang] = useState('Français');
-
   const { t, i18n } = useTranslation();
+
   const langMap = {
     Français: 'fr',
     English: 'en',
@@ -20,7 +18,28 @@ function Langue() {
     Русский: 'ru'
   };
 
+  // ✅ Ajoute ce useEffect
+  useEffect(() => {
+    const fetchLangue = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/langue');
+        const backendLang = response.data.langue;
 
+        // Inverse mapping : code -> nom affiché
+        const langEntry = Object.entries(langMap).find(([name, code]) => code === backendLang);
+        const displayName = langEntry ? langEntry[0] : 'Français';
+
+        setSelectedLang(displayName);
+        i18n.changeLanguage(backendLang);
+
+        console.log(`Langue initialisée depuis backend : ${displayName} (${backendLang})`);
+      } catch (error) {
+        console.error("Erreur récupération langue backend :", error);
+      }
+    };
+
+    fetchLangue();
+  }, [i18n]);
 
   const handleChange = async (e) => {
     const lang = e.target.value;
@@ -31,7 +50,7 @@ function Langue() {
     try {
       i18n.changeLanguage(langCode);
       await axios.post('http://localhost:5000/api/langue', { langue: lang });
-      console.log(`Langue envoyée au backend : ${lang}`);
+      console.log(`Langue envoyée au backend : ${lang} (${langCode})`);
     } catch (error) {
       console.error("Erreur lors de l'envoi de la langue :", error);
     }

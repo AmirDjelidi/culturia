@@ -12,6 +12,6 @@ app.use(helmet());
 
 
 app.use('/api/analyze', analyzeRoutes);
-app.use(langueRoutes);
+app.use('/api/langue', langueRoutes);
 
 module.exports = app;
