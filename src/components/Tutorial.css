@@ -1,0 +1,32 @@
+.tutorial-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  color: #b8860b; /* tout le texte en #b8860b */
+}
+
+.tutorial-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.tutorial-list {
+  list-style-type: decimal;
+  text-align: left;
+  margin: 0 auto 20px auto;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.scanner-icon {
+  color: #00cc66; /* rectangle vert uniquement */
+  margin: 0 5px;
+}
+
+.tutorial-end {
+  font-weight: bold;
+}
