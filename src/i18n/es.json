@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "home": "Inicio",
+    "language": "Idioma",
+    "tutorial": "Modo Tutorial",
+    "about": "Sobre Nosotros"
+  },
+  "langue": {
+    "h2": "Idioma",
+    "p1": "Elige tu idioma preferido para la aplicación:",
+    "p2": "El idioma seleccionado se aplicará a toda la aplicación."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "home": "Home",
+    "language": "Language",
+    "tutorial": "Tutorial Mode",
+    "about": "About Us"
+  },
+  "langue": {
+    "h2": "Language",
+    "p1": "Choose your preferred language for the application:",
+    "p2": "The selected language will be applied to the entire application."
+  }
+}

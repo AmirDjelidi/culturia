@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import { useTranslation } from 'react-i18next';
+
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   return (
     <header className="navbar">
@@ -14,10 +17,10 @@ function NavBar() {
         <div></div><div></div><div></div>
       </div>
       <nav className={`nav-links ${menuOpen ? 'show' : ''}`}>
-        <Link to="/" onClick={() => setMenuOpen(false)}>ACCUEIL</Link>
-        <Link to="/language" onClick={() => setMenuOpen(false)}>LANGUE</Link>
-        <Link to="/tutoriel" onClick={() => setMenuOpen(false)}>TUTORIEL MODE</Link>
-        <Link to="/a-propos" onClick={() => setMenuOpen(false)}>À PROPOS DE NOUS</Link>
+        <Link to="/" onClick={() => setMenuOpen(false)}>{t('menu.home')}</Link>
+        <Link to="/language" onClick={() => setMenuOpen(false)}>{t('menu.language')}</Link>
+        <Link to="/tutoriel" onClick={() => setMenuOpen(false)}>{t('menu.tutorial')}</Link>
+        <Link to="/a-propos" onClick={() => setMenuOpen(false)}>{t('menu.about')}</Link>
       </nav>
     </header>
   );

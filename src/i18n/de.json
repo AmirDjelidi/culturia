@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "home": "Startseite",
+    "language": "Sprache",
+    "tutorial": "Tutorial-Modus",
+    "about": "Über uns"
+  },
+  "langue": {
+    "h2": "Sprache",
+    "p1": "Wählen Sie Ihre bevorzugte Sprache für die Anwendung:",
+    "p2": "Die ausgewählte Sprache wird auf die gesamte Anwendung angewendet."
+  }
+}

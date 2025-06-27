@@ -46,3 +46,30 @@ video {
     height: 320px;
   }
 }
+
+.camera-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.capture-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #CCA052;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.camera-icon {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s ease;
+}
+.capture-button:hover {
+  background-color: #CCA052;
+}
