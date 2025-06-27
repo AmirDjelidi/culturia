@@ -28,11 +28,12 @@ function CameraFrame() {
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const imageBase64 = canvas.toDataURL('image/png');
+        const fullBase64 = canvas.toDataURL('image/jpeg');
+        const pureBase64 = fullBase64.split(',')[1];
 
         try {
             const response = await axios.post('http://localhost:5000/api/analyze', {
-                image: imageBase64
+                base64Image: pureBase64
             });
             console.log("Réponse backend :", response.data);
         } catch (err) {
