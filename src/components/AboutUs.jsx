@@ -1,5 +1,6 @@
 import React from 'react';
 import './AboutUs.css';
+import {useTranslation} from "react-i18next";
 
 const people = [
   { name: 'Amir Djelidi', img: '/images/personne1.jpg' },
@@ -11,19 +12,20 @@ const people = [
 ];
 
 function AboutUs() {
-  return (
-    <div className="about-us">
-      <h2>À PROPOS DE NOUS</h2>
-      <div className="team-grid">
-        {people.map((person, idx) => (
-          <div className="team-member" key={idx}>
-            <div className="name">{person.name}</div>
-            <img src={person.img} alt={person.name} />
+    const { t, i18n } = useTranslation();
+    return (
+        <div className="about-us">
+            <h2>{t('aboutus.aboutus')}</h2>
+          <div className="team-grid">
+            {people.map((person, idx) => (
+              <div className="team-member" key={idx}>
+                <div className="name">{person.name}</div>
+                <img src={person.img} alt={person.name} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  );
+        </div>
+      );
 }
 
 export default AboutUs;

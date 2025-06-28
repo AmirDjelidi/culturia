@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let langueActuelle = 'fr'; // default code
+let langueActuelle = 'en'; // default code
 
 router.post('/', (req, res) => {
   const { langue } = req.body; // ici tu reçois le nom affiché
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     Русский: 'ru'
   };
 
-  const langCode = langMap[langue] || 'fr';
+  const langCode = langMap[langue] || 'en';
 
   langueActuelle = langCode;
   console.log('Langue reçue :', langue, '=> stockée code :', langCode);

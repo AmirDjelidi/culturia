@@ -8,10 +8,10 @@ body {
 }
 
 .main-content {
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 160px); /* espace entre header et footer */
+  min-height: 300px; /* espace entre header et footer */
   flex-direction: column;
+  overflow-y: hidden;
 }

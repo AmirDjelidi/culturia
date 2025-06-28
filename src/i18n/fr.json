@@ -2,12 +2,26 @@
   "menu": {
     "home": "Accueil",
     "language": "Langue",
-    "tutorial": "Tutoriel Mode",
+    "tutorial": "Tutoriel",
     "about": "À propos de nous"
   },
   "langue" : {
     "h2" : "Langue",
     "p1" : "Choisissez votre langue préférée pour l'application :",
     "p2" : "La langue sélectionnée sera appliquée à l'ensemble de l'application."
+  },
+  "camera" : {
+    "h3" : "Scanner une œuvre",
+    "p" : "Analyse en cours…"
+
+  },
+  "tutorial": {
+    "tutoriel" : "Tutoriel",
+    "li1" : "Allez sur l'accueil",
+    "li2" : "Scannez l'œuvre avec l'appareil photo en cadrant l'œuvre dans le rectangle",
+    "li3" : "La description détaillée de l'œuvre apparaîtra"
+  },
+  "aboutus": {
+    "aboutus" : "À PROPOS DE NOUS"
   }
 }

@@ -2,12 +2,25 @@
   "menu": {
     "home": "Home",
     "language": "Language",
-    "tutorial": "Tutorial Mode",
+    "tutorial": "Tutorial",
     "about": "About Us"
   },
   "langue": {
     "h2": "Language",
     "p1": "Choose your preferred language for the application:",
     "p2": "The selected language will be applied to the entire application."
+  },
+  "camera": {
+    "h3": "Scan an artwork",
+    "p": "Analyzing…"
+  },
+  "tutorial": {
+    "tutoriel": "Tutorial",
+    "li1": "Go to the home page",
+    "li2": "Scan the artwork with the camera by framing it within the rectangle",
+    "li3": "A detailed description of the artwork will appear"
+  },
+  "aboutus": {
+    "aboutus": "ABOUT US"
   }
 }

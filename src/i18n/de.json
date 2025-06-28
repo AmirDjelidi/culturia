@@ -2,12 +2,25 @@
   "menu": {
     "home": "Startseite",
     "language": "Sprache",
-    "tutorial": "Tutorial-Modus",
+    "tutorial": "Tutorial",
     "about": "Über uns"
   },
   "langue": {
     "h2": "Sprache",
     "p1": "Wählen Sie Ihre bevorzugte Sprache für die Anwendung:",
     "p2": "Die ausgewählte Sprache wird auf die gesamte Anwendung angewendet."
+  },
+  "camera": {
+    "h3": "Ein Kunstwerk scannen",
+    "p": "Analyse läuft…"
+  },
+  "tutorial": {
+    "tutoriel": "Tutorial",
+    "li1": "Gehe zur Startseite",
+    "li2": "Scanne das Kunstwerk mit der Kamera, indem du es im Rechteck einrahmst",
+    "li3": "Eine detaillierte Beschreibung des Kunstwerks wird angezeigt"
+  },
+  "aboutus": {
+    "aboutus": "ÜBER UNS"
   }
 }

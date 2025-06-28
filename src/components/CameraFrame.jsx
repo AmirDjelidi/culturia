@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './CameraFrame.css';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 function CameraFrame() {
     const videoRef = useRef(null);
@@ -9,7 +10,7 @@ function CameraFrame() {
     const [showDescription, setShowDescription] = useState(false);
     const [facingMode, setFacingMode] = useState("environment");
     const [loading, setLoading] = useState(false);
-
+    const { t, i18n } = useTranslation();
     const startCamera = async () => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -86,7 +87,10 @@ function CameraFrame() {
                     </div>
                 </div>
             )}
+            <div className="camera-instruction">
+                <h3>{t('camera.h3')}</h3>
 
+            </div>
             <div className="camera-frame scanner-frame">
                 {loading ? (
                     <canvas ref={canvasRef} />
@@ -112,10 +116,12 @@ function CameraFrame() {
             {loading && (
                 <div className="loading-overlay">
                     <div className="loader"></div>
-                    <p>Analyse en cours…</p>
+                    <p>{t('camera.p')}</p>
                 </div>
             )}
+
         </div>
+
     );
 }
 

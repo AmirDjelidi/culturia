@@ -1,17 +1,19 @@
 import React from 'react';
 import './Tutorial.css';
+import {useTranslation} from "react-i18next";
 
 function Tutorial() {
+    const { t, i18n } = useTranslation();
   return (
     <div className="tutorial-container">
-      <h2 className="tutorial-title">Tutoriel</h2>
+      <h2 className="tutorial-title">{t('tutorial.tutoriel')}</h2>
       <ol className="tutorial-list">
-        <li>Allez sur l'accueil</li>
+        <li>{t('tutorial.li1')}</li>
         <li>
-          Scannez l'œuvre avec l'appareil photo en cadrant l'œuvre dans le rectangle
+            {t('tutorial.li2')}
           <span className="scanner-icon"> ☐ </span>
         </li>
-        <li>La description détaillée de l'œuvre apparaîtra</li>
+        <li>{t('tutorial.li3')}</li>
       </ol>
       <p className="tutorial-end">Bonne culture !</p>
     </div>

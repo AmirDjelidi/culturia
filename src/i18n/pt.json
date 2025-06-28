@@ -2,12 +2,25 @@
   "menu": {
     "home": "Início",
     "language": "Idioma",
-    "tutorial": "Modo Tutorial",
-    "about": "Sobre Nós"
+    "tutorial": "Tutorial",
+    "about": "Sobre nós"
   },
   "langue": {
     "h2": "Idioma",
-    "p1": "Escolha seu idioma preferido para o aplicativo:",
-    "p2": "A língua selecionada será aplicada a toda a aplicação."
+    "p1": "Escolha o idioma preferido para o aplicativo:",
+    "p2": "O idioma selecionado será aplicado a todo o aplicativo."
+  },
+  "camera": {
+    "h3": "Escanear uma obra",
+    "p": "Analisando…"
+  },
+  "tutorial": {
+    "tutoriel": "Tutorial",
+    "li1": "Vá para a página inicial",
+    "li2": "Escaneie a obra com a câmera enquadrando-a no retângulo",
+    "li3": "Uma descrição detalhada da obra aparecerá"
+  },
+  "aboutus": {
+    "aboutus": "SOBRE NÓS"
   }
 }
