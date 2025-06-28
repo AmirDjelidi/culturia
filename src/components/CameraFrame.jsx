@@ -9,7 +9,9 @@ function CameraFrame() {
     const [showDescription, setShowDescription] = useState(false);
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" }
+        })
             .then(stream => {
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
