@@ -7,6 +7,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/cli": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
     "axios": "^1.10.0",
     "cors": "^2.8.5",
     "dotenv": "^16.6.0",

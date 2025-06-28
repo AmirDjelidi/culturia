@@ -7,21 +7,31 @@ function CameraFrame() {
     const canvasRef = useRef(null);
     const [description, setDescription] = useState("");
     const [showDescription, setShowDescription] = useState(false);
+    const [facingMode, setFacingMode] = useState("environment");
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "environment" }
-        })
-            .then(stream => {
+        const startCamera = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode }
+                });
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
                 }
-            })
-            .catch(err => {
+            } catch (err) {
                 alert("Accès à la caméra refusé.");
                 console.error(err);
-            });
-    }, []);
+            }
+        };
+
+        startCamera();
+
+        return () => {
+            if (videoRef.current && videoRef.current.srcObject) {
+                videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+            }
+        };
+    }, [facingMode]);
 
     const handleCapture = async () => {
         const video = videoRef.current;
@@ -41,7 +51,7 @@ function CameraFrame() {
             });
             console.log("Réponse backend :", response.data);
             setDescription(response.data.description);
-            setShowDescription(true); // affiche la description
+            setShowDescription(true);
         } catch (err) {
             console.error("Erreur envoi image :", err);
         }
@@ -50,6 +60,10 @@ function CameraFrame() {
     const handleCloseDescription = () => {
         setShowDescription(false);
         setDescription("");
+    };
+
+    const handleSwitchCamera = () => {
+        setFacingMode(prev => prev === "user" ? "environment" : "user");
     };
 
     return (
@@ -71,9 +85,14 @@ function CameraFrame() {
             </div>
 
             {!showDescription && (
-                <button className="capture-button" onClick={handleCapture}>
-                    <img src="/images/camera-icon.png" alt="Prendre la photo" className="camera-icon" />
-                </button>
+                <div className="button-wrapper">
+                    <button className="capture-button" onClick={handleCapture}>
+                        <img src="/images/camera-icon.png" alt="Prendre la photo" className="camera-icon" />
+                    </button>
+                    <button className="switch-button" onClick={handleSwitchCamera}>
+                        <img src="/images/switch.png" alt="Changer de caméra" className="camera-icon" />
+                    </button>
+                </div>
             )}
         </div>
     );
