@@ -18,28 +18,48 @@ function Langue() {
     Русский: 'ru'
   };
 
-  // ✅ Ajoute ce useEffect
+
   useEffect(() => {
-    const fetchLangue = async () => {
+    const detectAndSetLanguage = async () => {
+      const langMap = {
+        Français: 'fr',
+        English: 'en',
+        Español: 'es',
+        Português: 'pt',
+        Deutsch: 'de',
+        한국어: 'ko',
+        中文: 'zh',
+        Русский: 'ru'
+      };
+
+      const supportedLangs = Object.values(langMap); // ['fr', 'en', ...]
+
+      // 🧠 1. Détection langue système
+      const systemLang = navigator.language?.split('-')[0] || 'en';
+      console.log(systemLang);
+
+      // 🛡️ 2. Vérifie si supportée
+      const langCode = supportedLangs.includes(systemLang) ? systemLang : 'en';
+
+      // 🔄 3. Nom d'affichage (Français, English, etc.)
+      const displayLangEntry = Object.entries(langMap).find(([label, code]) => code === langCode);
+      const displayName = displayLangEntry ? displayLangEntry[0] : 'English';
+
+      // 🔧 4. Mise à jour interface
+      setSelectedLang(displayName);
+      i18n.changeLanguage(langCode);
+
       try {
-        const response = await axios.get('https://culturia.onrender.com/api/langue');
-        const backendLang = response.data.langue;
-
-        // Inverse mapping : code -> nom affiché
-        const langEntry = Object.entries(langMap).find(([name, code]) => code === backendLang);
-        const displayName = langEntry ? langEntry[0] : 'Français';
-
-        setSelectedLang(displayName);
-        i18n.changeLanguage(backendLang);
-
-        console.log(`Langue initialisée depuis backend : ${displayName} (${backendLang})`);
-      } catch (error) {
-        console.error("Erreur récupération langue backend :", error);
+        await axios.post('https://culturia.onrender.com/api/langue', { langue: langCode });
+        console.log(`✅ Langue système détectée et envoyée : ${langCode}`);
+      } catch (err) {
+        console.error("❌ Erreur lors de l'envoi de la langue système :", err);
       }
     };
 
-    fetchLangue();
+    detectAndSetLanguage();
   }, [i18n]);
+
 
   const handleChange = async (e) => {
     const lang = e.target.value;
