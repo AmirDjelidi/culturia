@@ -22,7 +22,7 @@ function Langue() {
   useEffect(() => {
     const fetchLangue = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/langue');
+        const response = await axios.get('https://culturia.onrender.com/api/langue');
         const backendLang = response.data.langue;
 
         // Inverse mapping : code -> nom affiché
@@ -49,7 +49,7 @@ function Langue() {
 
     try {
       i18n.changeLanguage(langCode);
-      await axios.post('http://localhost:5000/api/langue', { langue: lang });
+      await axios.post('https://culturia.onrender.com/api/langue', { langue: lang });
       console.log(`Langue envoyée au backend : ${lang} (${langCode})`);
     } catch (error) {
       console.error("Erreur lors de l'envoi de la langue :", error);
