@@ -49,7 +49,7 @@ function CameraFrame() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/analyze', {
+            const response = await axios.post('https://culturia.onrender.com/api/analyze', {
                 base64Image: pureBase64
             });
             console.log("Réponse backend :", response.data);
