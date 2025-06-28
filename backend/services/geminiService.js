@@ -16,6 +16,7 @@ exports.sendToGemini = async (base64Image, langue) => {
     Anecdotes : [anecdotes ou faits intéressants sur l'œuvre]
     Importance : [importance de l'œuvre dans l'histoire de l'art ou la culture]
     Dans cette forme et rien d'autre !
+    Si aucune oeuvre d'art n'est détectée, réponds simplement "Aucune oeuvre d'art détectée". Si l'image est floue ou illisible, réponds "Image floue ou illisible".
     `;
 
     const body = {
