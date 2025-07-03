@@ -12,6 +12,7 @@ exports.analyzeImage = async (req, res) => {
     try {
         const result = await geminiService.sendToGemini(base64Image, langue);
         res.json({ description: result });
+        console.log("Analyser en langue :", langue);
     } catch (error) {
         console.error("❌ Erreur API Gemini :", error.response?.data || error.message);
         res.status(500).json({ error: "Erreur de traitement." });

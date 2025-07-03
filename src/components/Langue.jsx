@@ -27,7 +27,7 @@ function Langue() {
 
         // Inverse mapping : code -> nom affiché
         const langEntry = Object.entries(langMap).find(([name, code]) => code === backendLang);
-        const displayName = langEntry ? langEntry[0] : 'Français';
+        const displayName = langEntry ? langEntry[0] : 'English';
 
         setSelectedLang(displayName);
         i18n.changeLanguage(backendLang);
@@ -45,12 +45,12 @@ function Langue() {
     const lang = e.target.value;
     setSelectedLang(lang);
 
-    const langCode = langMap[lang] || 'fr';
+    const langCode = langMap[lang] || 'en';
 
     try {
       i18n.changeLanguage(langCode);
       await axios.post('https://culturia.onrender.com/api/langue', { langue: lang });
-      console.log(`Langue envoyée au backend : ${lang} (${langCode})`);
+      localStorage.setItem('langue', langCode);
     } catch (error) {
       console.error("Erreur lors de l'envoi de la langue :", error);
     }

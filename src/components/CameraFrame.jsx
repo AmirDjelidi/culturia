@@ -1,3 +1,4 @@
+// imports
 import React, { useRef, useEffect, useState } from 'react';
 import './CameraFrame.css';
 import axios from 'axios';
@@ -7,10 +8,12 @@ function CameraFrame() {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [description, setDescription] = useState("");
+    const [capturedImage, setCapturedImage] = useState(null);
     const [showDescription, setShowDescription] = useState(false);
     const [facingMode, setFacingMode] = useState("environment");
     const [loading, setLoading] = useState(false);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
+
     const startCamera = async () => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -27,9 +30,8 @@ function CameraFrame() {
 
     useEffect(() => {
         startCamera();
-
         return () => {
-            if (videoRef.current && videoRef.current.srcObject) {
+            if (videoRef.current?.srcObject) {
                 videoRef.current.srcObject.getTracks().forEach(track => track.stop());
             }
         };
@@ -46,14 +48,15 @@ function CameraFrame() {
 
         const fullBase64 = canvas.toDataURL('image/jpeg');
         const pureBase64 = fullBase64.split(',')[1];
+        setCapturedImage(fullBase64); // <- enregistrer l'image
 
         setLoading(true);
 
         try {
             const response = await axios.post('https://culturia.onrender.com/api/analyze', {
                 base64Image: pureBase64
+
             });
-            console.log("Réponse backend :", response.data);
             setDescription(response.data.description);
             setShowDescription(true);
         } catch (err) {
@@ -66,7 +69,8 @@ function CameraFrame() {
     const handleCloseDescription = () => {
         setShowDescription(false);
         setDescription("");
-        startCamera(); // ✅ relance la caméra
+        setCapturedImage(null);
+        startCamera();
     };
 
     const handleSwitchCamera = () => {
@@ -77,9 +81,14 @@ function CameraFrame() {
 
     return (
         <div className="camera-container">
+            {showDescription && <div className="description-overlay" />}
             {showDescription && (
+
                 <div className="description-frame fade-in">
-                    <button className="close-button" onClick={handleCloseDescription}>×</button>
+                    <button className="close-button" onClick={handleCloseDescription}>X</button>
+                    {capturedImage && (
+                        <img src={capturedImage} alt="Captured" className="description-image" />
+                    )}
                     <div className="description-content">
                         {description.split('\n').map((line, index) => (
                             <p key={index}>{line}</p>
@@ -87,10 +96,11 @@ function CameraFrame() {
                     </div>
                 </div>
             )}
+
             <div className="camera-instruction">
                 <h3>{t('camera.h3')}</h3>
-
             </div>
+
             <div className="camera-frame scanner-frame">
                 {loading ? (
                     <canvas ref={canvasRef} />
@@ -119,9 +129,7 @@ function CameraFrame() {
                     <p>{t('camera.p')}</p>
                 </div>
             )}
-
         </div>
-
     );
 }
 
